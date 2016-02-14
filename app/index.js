@@ -15,7 +15,6 @@ const log = debug('application:bootstrap')
 
 log('creating application node')
 const applicationNode = document.createElement('div')
-applicationNode.className = 'container'
 applicationNode.id = 'application'
 
 log('adding application node to body')

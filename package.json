@@ -14,7 +14,7 @@
     "dev": "webpack-dev-server --progress --inline --hot",
     "test": "npm run lint-standard",
     "build-dist": "webpack --config webpack.config-dist.js --progress --bail -p",
-    "dist": "npm test && rm -rf dist && npm run build-dist",
+    "dist": "npm test && rm -rf dist && npm run build-dist && cp public/images/apple-icons/* dist",
     "lint-standard": "standard *.js, ./app/*.js, ./app/**/*.js | standard-reporter --stylish",
     "lint-test": "npm run lint-standard --force"
   },
