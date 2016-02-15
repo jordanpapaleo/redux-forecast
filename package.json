@@ -1,11 +1,12 @@
 {
-  "name": "redux-seed",
+  "name": "redux-forcast",
   "version": "1.0.0",
-  "description": "A web seed project using webpack, react, es6, redux, authentication",
+  "description": "An example project built to display redux and react",
   "keywords": [
     "react",
     "redux",
-    "seed",
+    "google maps",
+    "spark chart",
     "es6"
   ],
   "main": "./app/index.js",
