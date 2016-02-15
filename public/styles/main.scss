@@ -1,3 +1,43 @@
-body {
-  background-color: pink;
+$brown: #736565;
+$darkerBrown: #6C6061;
+$lightGrey: #D0D8D9;
+$tan: #A69C94;
+$other: #A67A6A;
+
+html, body, #application {
+  height: 100%;
+}
+
+.app-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header, .app-content, .app-footer {
+  padding: 2em;
+}
+
+.app-content {
+  flex: 1;
+}
+
+.app-header {
+  background-color: $lightGrey;
+
+  h1 {
+    font-weight: 100;
+  }
+
+  .header-logo {
+    width: 50px;
+  }
+}
+
+.app-footer {
+  background-color: $tan;
+  border-top: 1px solid $darkerBrown;
+  font-size: 80%;
+  font-weight: 700;
+  text-align: right;
 }
