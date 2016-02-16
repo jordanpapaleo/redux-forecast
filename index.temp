@@ -1,0 +1,43 @@
+import 'libs/bootstrap-4.0-flex.css'
+import 'styles/main.scss'
+
+import debug from 'debug'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import ReduxPromise from 'redux-promise'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistory, routeReducer } from 'react-router-redux'
+
+import App from 'components/app'
+import reducers from 'reducers'
+
+const reducer = combineReducers(Object.assign({}, reducers, {
+  routing: routeReducer
+}))
+
+// Sync dispatched route actions to the history
+const reduxRouterMiddleware = syncHistory(browserHistory)
+const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware, ReduxPromise)(createStore)
+
+const store = createStoreWithMiddleware(reducer)
+
+// Required for replaying actions from devtools to work
+// reduxRouterMiddleware.listenForReplays(store)
+
+const applicationNode = document.createElement('div')
+applicationNode.id = 'application'
+document.body.appendChild(applicationNode)
+
+const rootNode = (
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path='/' component={App} />
+    </Router>
+  </Provider>
+)
+
+ReactDOM.render(rootNode, applicationNode, () => {
+  log('finished mounting application')
+})
