@@ -6,7 +6,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import ReduxPromise from 'redux-promise' // Middleware
+import ReduxPromise from 'redux-promise'
 import App from 'components/app'
 import reducers from 'reducers'
 
@@ -20,10 +20,12 @@ applicationNode.id = 'application'
 log('adding application node to body')
 document.body.appendChild(applicationNode)
 
-const node = <Provider store={createStoreWithMiddleware(reducers)}>
-  <App />
-</Provider>
+const rootNode = (
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <App />
+  </Provider>
+)
 
-render(node, applicationNode, () => {
+render(rootNode, applicationNode, () => {
   log('finished mounting application')
 })
